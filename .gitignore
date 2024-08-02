@@ -366,3 +366,7 @@ MigrationBackup/
 FodyWeavers.xsd
 /VHSMP/Properties/Settings.settings
 /VHSMP/Properties/Settings.Designer.cs
+<<<<<<< Updated upstream
+=======
+/VHSMP/App.config
+>>>>>>> Stashed changes
