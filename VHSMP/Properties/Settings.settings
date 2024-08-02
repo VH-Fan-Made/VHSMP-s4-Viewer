@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="VHSMP.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
@@ -57,10 +57,10 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="TwitchClientId" Type="System.String" Scope="Application">
-      <Value Profile="(Default)"></Value>
+      <Value Profile="(Default)">zu70x40yj2o3iuljfh9nsyaf7j6v4x</Value>
     </Setting>
     <Setting Name="TwitchClientSecret" Type="System.String" Scope="Application">
-      <Value Profile="(Default)"></Value>
+      <Value Profile="(Default)">90f7cnn2v821v8a2zz6q51dk6cmbzz</Value>
     </Setting>
     <Setting Name="TwitchRedirectUri" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://localhost:8080/redirect/</Value>
@@ -70,6 +70,12 @@
     </Setting>
     <Setting Name="TwitchClientRefreshToken" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SettingJSON" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Autoload" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

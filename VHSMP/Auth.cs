@@ -13,7 +13,7 @@ namespace VHSMP
         private static List<string> scopes = new List<string> { "chat:read", "whispers:read", "whispers:edit", "chat:edit", "channel:moderate" };
         private static TwitchAPI api = new TwitchAPI(); 
         private static TwitchAPI? api2 = null;
-        public static TwitchAPI getAPI()
+        public static TwitchAPI? getAPI()
         {
             return api2;
         }
