@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Net;
 
 namespace VHSMP
 {
@@ -16,7 +15,6 @@ namespace VHSMP
             myProcess.StartInfo.Arguments = "--enable-features=WebContentsForceDark --profile-directory=Default --app=https://www.twitch.tv/" + Streamer;
             myProcess.Start();
         }
-        LiveMonitor? liveMonitor;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -236,10 +234,6 @@ namespace VHSMP
             checkBox16.Checked = Properties.Settings.Default.checkBox16;
             checkBox17.Checked = Properties.Settings.Default.checkBox17;
             checkBox18.Checked = Properties.Settings.Default.checkBox18;
-
-            liveMonitor = new LiveMonitor();
-
-            timer1.Enabled = true;
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -284,72 +278,6 @@ namespace VHSMP
             if (checkBox16.Checked) ViewStream(groupBox16.Text);
             if (checkBox17.Checked) ViewStream(groupBox17.Text);
             if (checkBox18.Checked) ViewStream(groupBox18.Text);
-        }
-
-        private void button21_Click(object sender, EventArgs e)
-        {
-            statusCheck();
-        }
-
-        private void getStatus(Label label, GroupBox groupBox)
-        {
-            if (liveMonitor != null)
-            {
-                int a = liveMonitor.getStatus(groupBox.Text);
-                if (a == 0)
-                {
-                    label.Text = "Offline";
-                    label.ForeColor = Color.Red;
-                    groupBox.BackgroundImage = null;
-                }
-                else
-                {
-                    label.Text = "Online - " + a + " viewer(s)";
-                    label.ForeColor = Color.LightGreen;
-                    try
-                    {
-                        Uri? u = liveMonitor.getProfilePicture(groupBox.Text);
-#pragma warning disable SYSLIB0014 // Type or member is obsolete
-                        using (WebClient webClient = new WebClient())
-                        {
-                            if (u != null)
-                            {
-                                webClient.DownloadFile(u.ToString().Replace("{width}", "145").Replace("{height}", "74"), groupBox.Text + ".png");
-                            }
-                        }
-#pragma warning restore SYSLIB0014 // Type or member is obsolete
-                        groupBox.BackgroundImage = Image.FromFile(groupBox.Text + ".png");
-                    }
-                    catch (Exception ex) { Console.WriteLine(ex.ToString()); }
-                }
-            }
-        }
-
-        private void statusCheck()
-        {
-            getStatus(label1, groupBox1);
-            getStatus(label2, groupBox2);
-            getStatus(label3, groupBox3);
-            getStatus(label4, groupBox4);
-            getStatus(label5, groupBox5);
-            getStatus(label6, groupBox6);
-            getStatus(label7, groupBox7);
-            getStatus(label8, groupBox8);
-            getStatus(label9, groupBox9);
-            getStatus(label10, groupBox10);
-            getStatus(label11, groupBox11);
-            getStatus(label12, groupBox12);
-            getStatus(label13, groupBox13);
-            getStatus(label14, groupBox14);
-            getStatus(label15, groupBox15);
-            getStatus(label16, groupBox16);
-            getStatus(label17, groupBox17);
-            getStatus(label18, groupBox18);
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            statusCheck();
         }
     }
 }
