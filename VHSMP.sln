@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VHSMP", "VHSMP\VHSMP.csproj", "{22F72E24-FA82-49A4-A025-10543128EE52}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "VHSMPs4ViewerSetup", "..\VHSMP v1\VHSMPs4ViewerSetup\VHSMPs4ViewerSetup.vdproj", "{1FE6DD89-A640-4EB2-848E-51A0D70CD463}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{22F72E24-FA82-49A4-A025-10543128EE52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22F72E24-FA82-49A4-A025-10543128EE52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22F72E24-FA82-49A4-A025-10543128EE52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FE6DD89-A640-4EB2-848E-51A0D70CD463}.Debug|Any CPU.ActiveCfg = Debug
+		{1FE6DD89-A640-4EB2-848E-51A0D70CD463}.Debug|Any CPU.Build.0 = Debug
+		{1FE6DD89-A640-4EB2-848E-51A0D70CD463}.Release|Any CPU.ActiveCfg = Release
+		{1FE6DD89-A640-4EB2-848E-51A0D70CD463}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
