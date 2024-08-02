@@ -1,4 +1,9 @@
+using Newtonsoft.Json;
+using System.Configuration;
 using System.Diagnostics;
+using System.Net;
+using VHSMP.Models;
+using VHSMP.Properties;
 
 namespace VHSMP
 {
@@ -8,6 +13,10 @@ namespace VHSMP
         {
             InitializeComponent();
         }
+
+        string settingJSON = Properties.Settings.Default.SettingJSON;
+        Dictionary<string, bool> settings = new();
+           
         public void ViewStream(String Streamer)
         {
             Process myProcess = new Process();
@@ -15,269 +24,176 @@ namespace VHSMP
             myProcess.StartInfo.Arguments = "--enable-features=WebContentsForceDark --profile-directory=Default --app=https://www.twitch.tv/" + Streamer;
             myProcess.Start();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox1.Text);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox2.Text);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox3.Text);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox4.Text);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox5.Text);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox6.Text);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox7.Text);
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox8.Text);
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox9.Text);
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox10.Text);
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox11.Text);
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox12.Text);
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox13.Text);
-        }
-
-        private void button14_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox14.Text);
-        }
-
-        private void button15_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox15.Text);
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox16.Text);
-        }
-
-        private void button17_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox17.Text);
-        }
-
-        private void button18_Click(object sender, EventArgs e)
-        {
-            ViewStream(groupBox18.Text);
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox1 = checkBox1.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox2 = checkBox2.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox3 = checkBox3.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox4 = checkBox4.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox5_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox5 = checkBox5.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox6_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox6 = checkBox6.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox7_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox7 = checkBox7.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox8_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox8 = checkBox8.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox9_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox9 = checkBox9.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox10_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox10 = checkBox10.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox11_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox11 = checkBox11.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox12_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox12 = checkBox12.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox13_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox13 = checkBox13.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox14_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox14 = checkBox14.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox15_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox15 = checkBox15.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox16_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox16 = checkBox16.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox17_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox17 = checkBox17.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void checkBox18_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkBox18 = checkBox18.Checked;
-            Properties.Settings.Default.Save();
-        }
+        LiveMonitor? liveMonitor;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            checkBox1.Checked = Properties.Settings.Default.checkBox1;
-            checkBox2.Checked = Properties.Settings.Default.checkBox2;
-            checkBox3.Checked = Properties.Settings.Default.checkBox3;
-            checkBox4.Checked = Properties.Settings.Default.checkBox4;
-            checkBox5.Checked = Properties.Settings.Default.checkBox5;
-            checkBox6.Checked = Properties.Settings.Default.checkBox6;
-            checkBox7.Checked = Properties.Settings.Default.checkBox7;
-            checkBox8.Checked = Properties.Settings.Default.checkBox8;
-            checkBox9.Checked = Properties.Settings.Default.checkBox9;
-            checkBox10.Checked = Properties.Settings.Default.checkBox10;
-            checkBox11.Checked = Properties.Settings.Default.checkBox11;
-            checkBox12.Checked = Properties.Settings.Default.checkBox12;
-            checkBox13.Checked = Properties.Settings.Default.checkBox13;
-            checkBox14.Checked = Properties.Settings.Default.checkBox14;
-            checkBox15.Checked = Properties.Settings.Default.checkBox15;
-            checkBox16.Checked = Properties.Settings.Default.checkBox16;
-            checkBox17.Checked = Properties.Settings.Default.checkBox17;
-            checkBox18.Checked = Properties.Settings.Default.checkBox18;
+            liveMonitor = new LiveMonitor();
+            generateList();
         }
 
-        private void button19_Click(object sender, EventArgs e)
+        private void generateList()
         {
-            ViewStream(groupBox1.Text);
-            ViewStream(groupBox2.Text);
-            ViewStream(groupBox3.Text);
-            ViewStream(groupBox4.Text);
-            ViewStream(groupBox5.Text);
-            ViewStream(groupBox6.Text);
-            ViewStream(groupBox7.Text);
-            ViewStream(groupBox8.Text);
-            ViewStream(groupBox9.Text);
-            ViewStream(groupBox10.Text);
-            ViewStream(groupBox11.Text);
-            ViewStream(groupBox12.Text);
-            ViewStream(groupBox13.Text);
-            ViewStream(groupBox14.Text);
-            ViewStream(groupBox15.Text);
-            ViewStream(groupBox16.Text);
-            ViewStream(groupBox17.Text);
-            ViewStream(groupBox18.Text);
+            List<string> lst = new() {
+                "5up",
+                "Abe",
+                "CaptainPuffy",
+                "CaptainSparklez",
+                "ChosenArchitect",
+                "falsesymmetry",
+                "HBomb94",
+                "Hrry",
+                "InTheLittleWood",
+                "iskall85",
+                "itsRyanHiga",
+                "jojosolos",
+                "KaraCorvus",
+                "PeteZahHutt",
+                "Stressmonster",
+                "tangofrags",
+                "Tubbo",
+                "Seapeekay"
+            };
+            foreach (string s in lst)
+            {
+                createGroupBox(s);
+            }
+            onlineAutoloadToolStripMenuItem.BackColor = Color.Red;
         }
 
-        private void button20_Click(object sender, EventArgs e)
+        private void createGroupBox(string streamer)
         {
-            if (checkBox1.Checked) ViewStream(groupBox1.Text);
-            if (checkBox2.Checked) ViewStream(groupBox2.Text);
-            if (checkBox3.Checked) ViewStream(groupBox3.Text);
-            if (checkBox4.Checked) ViewStream(groupBox4.Text);
-            if (checkBox5.Checked) ViewStream(groupBox5.Text);
-            if (checkBox6.Checked) ViewStream(groupBox6.Text);
-            if (checkBox7.Checked) ViewStream(groupBox7.Text);
-            if (checkBox8.Checked) ViewStream(groupBox8.Text);
-            if (checkBox9.Checked) ViewStream(groupBox9.Text);
-            if (checkBox10.Checked) ViewStream(groupBox10.Text);
-            if (checkBox11.Checked) ViewStream(groupBox11.Text);
-            if (checkBox12.Checked) ViewStream(groupBox12.Text);
-            if (checkBox13.Checked) ViewStream(groupBox13.Text);
-            if (checkBox14.Checked) ViewStream(groupBox14.Text);
-            if (checkBox15.Checked) ViewStream(groupBox15.Text);
-            if (checkBox16.Checked) ViewStream(groupBox16.Text);
-            if (checkBox17.Checked) ViewStream(groupBox17.Text);
-            if (checkBox18.Checked) ViewStream(groupBox18.Text);
+            Streamer s = new Streamer();
+            s.name = streamer;
+
+            //Label l = new Label();
+            CheckBox cb = new CheckBox();
+            cb.Text = "Offline";
+            cb.BackColor = Color.Transparent;
+            cb.Checked = getSettings(streamer + "-cb");
+            cb.CheckedChanged += (sender, e) => { setSettings(streamer + "-cb", cb.Checked); };
+
+            loadSelectedToolStripMenuItem.Click += (sender, e) => { if (cb.Checked) { ViewStream(streamer); }; };
+            Button b = new Button();
+            b.Click += (sender, e) => ViewStream(streamer);
+            b.Name = streamer + "-b";
+            b.Text = "View";
+            FlowLayoutPanel f = new FlowLayoutPanel();
+            f.Dock = DockStyle.Fill;
+            f.FlowDirection = FlowDirection.TopDown;
+            f.BackColor = Color.Transparent;
+            f.TabStop = true;
+            f.Controls.Add(cb);
+            //f.Controls.Add(l);
+            f.Controls.Add(b);
+            GroupBox gb = new GroupBox();
+            gb.Name = streamer + "-gb";
+            gb.Text = streamer;
+            gb.Controls.Add(f);
+            gb.Width = (flowLayoutPanel1.Width / 5) - 6;
+            gb.Height = (gb.Width / 16) * 10;
+            flowLayoutPanel1.Controls.Add(gb);
+            onlineAutoloadToolStripMenuItem.BackColor = Settings.Default.Autoload ? Color.LightGreen : Color.Red;
+            System.Windows.Forms.Timer t = new();
+            t.Interval = 5000;
+            t.Tick += (sender, e) =>
+            {
+                s.imageHeight = gb.Height - 3;
+                s.imageWidth = gb.Width - 3;
+                s = getStreamerStatus(s);
+
+                if (s.viewers == 0)
+                {
+                    cb.Text = "Offline";
+                    cb.ForeColor = Color.Red;
+                    f.BackgroundImage = null;
+                }
+                else
+                {
+                    if (s.image == null && Settings.Default.Autoload) 
+                    {
+                        ViewStream(streamer);
+                    }
+                    cb.Text = "Online - " + s.viewers + " viewer(s)";
+                    cb.ForeColor = Color.LightGreen;
+                    f.BackgroundImage = s.image;
+                }
+
+            };
+            t.Enabled = true;
+
+        }
+
+        private Streamer getStreamerStatus(Streamer streamer)
+        {
+            Streamer s = streamer;
+            if (liveMonitor != null)
+            {
+                streamer.viewers = liveMonitor.getStatus(s.name);
+                if (streamer.viewers != 0)
+                {
+                    try
+                    {
+                        Uri? u = liveMonitor.getProfilePicture(s.name);
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
+                        using (WebClient webClient = new WebClient())
+                        {
+                            if (u != null)
+                            {
+                                webClient.DownloadFile(u.ToString().Replace("{width}", s.imageWidth.ToString()).Replace("{height}", s.imageHeight.ToString()), s.name + "-" + s.imageWidth.ToString() + "x" + s.imageHeight.ToString() + ".png");
+                            }
+                        }
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
+                        s.image = Image.FromFile(streamer.name + "-" + s.imageWidth.ToString() + "x" + s.imageHeight.ToString() + ".png");
+                    }
+                    catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                }
+            }
+            return s;
+        }
+
+        private void setSettings(string streamer, bool value)
+        {
+            if (settings.ContainsKey(streamer))
+            {
+                settings[streamer] = value;
+            }
+            else
+            {
+                settings.Add(streamer, value);
+            }
+            settingJSON = JsonConvert.SerializeObject(settings);
+            Properties.Settings.Default.SettingJSON = settingJSON;
+            Properties.Settings.Default.Save();
+        }
+
+        private bool getSettings(string key)
+        {
+            settingJSON = Properties.Settings.Default.SettingJSON;
+
+            Dictionary<string, bool>? tempSettings = JsonConvert.DeserializeObject<Dictionary<string, bool>>(settingJSON);
+            if (tempSettings != null) settings = tempSettings;
+            if (settings.ContainsKey(key))
+            {
+                return settings[key];
+            }
+            return false;
+        }
+
+        private void onlineAutoloadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (onlineAutoloadToolStripMenuItem.BackColor == Color.Red)
+            {
+                onlineAutoloadToolStripMenuItem.BackColor = Color.LightGreen;
+                Settings.Default.Autoload = true;
+                Settings.Default.Save();
+            }
+            else
+            {
+                onlineAutoloadToolStripMenuItem.BackColor = Color.Red;
+                Settings.Default.Autoload = false;
+                Settings.Default.Save();
+            }
         }
     }
 }

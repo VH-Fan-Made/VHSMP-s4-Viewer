@@ -238,5 +238,80 @@ namespace VHSMP.Properties {
                 this["checkBox18"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("zu70x40yj2o3iuljfh9nsyaf7j6v4x")]
+        public string TwitchClientId {
+            get {
+                return ((string)(this["TwitchClientId"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("90f7cnn2v821v8a2zz6q51dk6cmbzz")]
+        public string TwitchClientSecret {
+            get {
+                return ((string)(this["TwitchClientSecret"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8080/redirect/")]
+        public string TwitchRedirectUri {
+            get {
+                return ((string)(this["TwitchRedirectUri"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TwitchClientAccessToken {
+            get {
+                return ((string)(this["TwitchClientAccessToken"]));
+            }
+            set {
+                this["TwitchClientAccessToken"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TwitchClientRefreshToken {
+            get {
+                return ((string)(this["TwitchClientRefreshToken"]));
+            }
+            set {
+                this["TwitchClientRefreshToken"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SettingJSON {
+            get {
+                return ((string)(this["SettingJSON"]));
+            }
+            set {
+                this["SettingJSON"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Autoload {
+            get {
+                return ((bool)(this["Autoload"]));
+            }
+            set {
+                this["Autoload"] = value;
+            }
+        }
     }
 }
