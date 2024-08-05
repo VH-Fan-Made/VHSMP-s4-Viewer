@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Net;
 using VHSMP.Models;
 using VHSMP.Properties;
+using System.IO;
+using System.Reflection;
 
 namespace VHSMP
 {
@@ -16,11 +18,11 @@ namespace VHSMP
 
         string settingJSON = Properties.Settings.Default.SettingJSON;
         Dictionary<string, bool> settings = new();
-           
+
         public void ViewStream(String Streamer)
         {
             Process myProcess = new Process();
-            myProcess.StartInfo.FileName = "C:\\Program Files\\Google\\Chrome\\Application\\chrome_proxy.exe";
+            myProcess.StartInfo.FileName = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge_proxy.exe";
             myProcess.StartInfo.Arguments = "--enable-features=WebContentsForceDark --profile-directory=Default --app=https://www.twitch.tv/" + Streamer;
             myProcess.Start();
         }
@@ -30,7 +32,20 @@ namespace VHSMP
         {
             liveMonitor = new LiveMonitor();
             generateList();
+            temp();
         }
+
+        private string temp()
+        {
+            string subPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "images\\");
+
+            bool exists = System.IO.Directory.Exists(subPath);
+
+            if (!exists)
+                System.IO.Directory.CreateDirectory(subPath);
+            return subPath;
+        }
+
 
         private void generateList()
         {
@@ -98,31 +113,40 @@ namespace VHSMP
             t.Interval = 5000;
             t.Tick += (sender, e) =>
             {
-                s.imageHeight = gb.Height - 3;
-                s.imageWidth = gb.Width - 3;
-                s = getStreamerStatus(s);
-
-                if (s.viewers == 0)
-                {
-                    cb.Text = "Offline";
-                    cb.ForeColor = Color.Red;
-                    f.BackgroundImage = null;
-                }
-                else
-                {
-                    if (s.image == null && Settings.Default.Autoload) 
-                    {
-                        ViewStream(streamer);
-                    }
-                    cb.Text = "Online - " + s.viewers + " viewer(s)";
-                    cb.ForeColor = Color.LightGreen;
-                    f.BackgroundImage = s.image;
-                }
-
+                timerTick(f, gb, cb, s);
             };
             t.Enabled = true;
-
+            timerTick(f, gb, cb, s);
         }
+        private void timerTick(FlowLayoutPanel f, GroupBox gb, CheckBox cb, Streamer s)
+        {
+            s.imageHeight = gb.Height - 3;
+            s.imageWidth = gb.Width - 3;
+            s = getStreamerStatus(s);
+
+            if (s.viewers == 0)
+            {
+                cb.Text = "Offline";
+                cb.ForeColor = Color.Red;
+                f.BackgroundImage = null;
+            }
+            else
+            {
+                if (s.image == null && Settings.Default.Autoload)
+                {
+                    ViewStream(s.name);
+                }
+                cb.Text = "Online - " + s.viewers + " viewer(s)";
+                cb.ForeColor = Color.LightGreen;
+                f.BackgroundImage = null;
+                f.BackgroundImage = s.image;
+                s.image = null;
+                if (s.imagePathOld != "") File.Delete(s.imagePathOld);
+            }
+        }
+
+        private int number = 0;
+
 
         private Streamer getStreamerStatus(Streamer streamer)
         {
@@ -130,7 +154,7 @@ namespace VHSMP
             if (liveMonitor != null)
             {
                 streamer.viewers = liveMonitor.getStatus(s.name);
-                if (streamer.viewers != 0)
+                if (s.viewers > 0)
                 {
                     try
                     {
@@ -140,16 +164,38 @@ namespace VHSMP
                         {
                             if (u != null)
                             {
-                                webClient.DownloadFile(u.ToString().Replace("{width}", s.imageWidth.ToString()).Replace("{height}", s.imageHeight.ToString()), s.name + "-" + s.imageWidth.ToString() + "x" + s.imageHeight.ToString() + ".png");
+                                string url = u.ToString().Replace("{width}",
+                                    s.imageWidth.ToString()).Replace("{height}",
+                                    s.imageHeight.ToString());
+                                string tPath = temp() +
+                                    number++ + "-" +
+                                    s.name + "-" +
+                                    s.imageWidth.ToString() + "x" +
+                                    s.imageHeight.ToString() + ".png";
+                                s.imagePathOld = s.imagePath;
+                                s.imagePath = tPath;
+                                webClient.Headers.Add("Accept: text/html, application/xhtml+xml, */*");
+                                webClient.Headers.Add("User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)");
+                                webClient.DownloadFile(url, tPath);
                             }
                         }
 #pragma warning restore SYSLIB0014 // Type or member is obsolete
-                        s.image = Image.FromFile(streamer.name + "-" + s.imageWidth.ToString() + "x" + s.imageHeight.ToString() + ".png");
+                        s.image = GetImage(s.imagePath);
                     }
                     catch (Exception ex) { Console.WriteLine(ex.ToString()); }
                 }
             }
             return s;
+        }
+
+        private Image GetImage(string file)
+        {
+            Image img;
+            using (var bmpTemp = new Bitmap(file))
+            {
+                img = new Bitmap(bmpTemp);
+            }
+            return img;
         }
 
         private void setSettings(string streamer, bool value)
@@ -193,6 +239,14 @@ namespace VHSMP
                 onlineAutoloadToolStripMenuItem.BackColor = Color.Red;
                 Settings.Default.Autoload = false;
                 Settings.Default.Save();
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            foreach (string f in Directory.EnumerateFiles(temp()))
+            {
+                File.Delete(f);
             }
         }
     }

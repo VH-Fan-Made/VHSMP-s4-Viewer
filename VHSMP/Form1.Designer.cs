@@ -72,19 +72,19 @@
             // loadAllToolStripMenuItem1
             // 
             loadAllToolStripMenuItem1.Name = "loadAllToolStripMenuItem1";
-            loadAllToolStripMenuItem1.Size = new Size(180, 22);
+            loadAllToolStripMenuItem1.Size = new Size(159, 22);
             loadAllToolStripMenuItem1.Text = "Load all";
             // 
             // loadSelectedToolStripMenuItem
             // 
             loadSelectedToolStripMenuItem.Name = "loadSelectedToolStripMenuItem";
-            loadSelectedToolStripMenuItem.Size = new Size(180, 22);
+            loadSelectedToolStripMenuItem.Size = new Size(159, 22);
             loadSelectedToolStripMenuItem.Text = "Load selected";
             // 
             // onlineAutoloadToolStripMenuItem
             // 
             onlineAutoloadToolStripMenuItem.Name = "onlineAutoloadToolStripMenuItem";
-            onlineAutoloadToolStripMenuItem.Size = new Size(180, 22);
+            onlineAutoloadToolStripMenuItem.Size = new Size(159, 22);
             onlineAutoloadToolStripMenuItem.Text = "Online autoload";
             onlineAutoloadToolStripMenuItem.Click += onlineAutoloadToolStripMenuItem_Click;
             // 
@@ -100,6 +100,7 @@
             Name = "Form1";
             Text = "VHSMP Season 4 Viewer";
             WindowState = FormWindowState.Maximized;
+            FormClosed += Form1_FormClosed;
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

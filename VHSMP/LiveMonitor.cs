@@ -1,19 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-using TwitchLib.Api;
+﻿using TwitchLib.Api;
 using TwitchLib.Api.Services;
-using TwitchLib.Api.Services.Events;
-using TwitchLib.Api.Services.Events.LiveStreamMonitor;
-using TwitchLib.Api.Helix.Models.Entitlements.GetCodeStatus;
-using TwitchLib.Api.Core.Enums;
 
 namespace VHSMP
 {
@@ -78,7 +64,6 @@ namespace VHSMP
                     if (stream.ViewerCount > 0 && stream.UserName == streamer)
                     {
                         var strem = stream;
-                        Console.WriteLine(streamer + " :" + strem.ViewerCount);
                         Uri stremUri;
                         UriCreationOptions uriCreationOptions = new UriCreationOptions();
                         uriCreationOptions.DangerousDisablePathAndQueryCanonicalization = true;
